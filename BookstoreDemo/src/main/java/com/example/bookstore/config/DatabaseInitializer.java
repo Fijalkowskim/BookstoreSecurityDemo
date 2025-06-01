@@ -25,13 +25,13 @@ public class DatabaseInitializer {
 
             userRepository.save(User.builder()
                     .email("admin@a.com")
-                    .password(passwordEncoder.encode("admin"))
+                    .password("admin")
                     .role(Role.ADMIN)
                     .build());
 
             userRepository.save(User.builder()
                     .email("user@a.com")
-                    .password(passwordEncoder.encode("user"))
+                    .password("user")
                     .role(Role.USER)
                     .build());
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::section})}">
+<section>
+    <h2>My Orders</h2>
+    <div th:if="${#lists.isEmpty(orders)}">
+        <p>No orders yet.</p>
+    </div>
+    <div th:each="order : ${orders}">
+        <h5 th:text="'BookOrder #' + ${order.id} + ' - ' + ${#temporals.format(order.createdAt, 'yyyy-MM-dd HH:mm')}">BookOrder Info</h5>
+        <ul>
+            <li th:each="item : ${order.items}">
+                <span th:text="${item.book.title}">Title</span> -
+                <span th:text="${item.quantity}">1</span> pcs
+            </li>
+        </ul>
+        <hr/>
+    </div>
+</section>
+</html>

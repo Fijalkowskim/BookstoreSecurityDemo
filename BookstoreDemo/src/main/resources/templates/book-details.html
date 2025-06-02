@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::section})}">
+<section>
+    <h2 th:text="${book.title}">Book Title</h2>
+    <p th:text="${book.author}">Author</p>
+    <p>Price: $<span th:text="${book.price}">0.00</span></p>
+
+    <hr>
+    <h4>Reviews</h4>
+    <div th:each="review : ${reviews}">
+        <p><strong th:text="${review.user.email}">User</strong>:</p>
+        <p th:text="${review.content}">Review content</p>
+        <hr>
+    </div>
+
+    <form th:action="@{/books/{bookId}/reviews(bookId=${book.id})}" method="post">
+        <div class="mb-3">
+            <textarea class="form-control" name="content" rows="3" placeholder="Write a review..."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</section>
+</html>

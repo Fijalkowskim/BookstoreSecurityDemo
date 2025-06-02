@@ -9,7 +9,7 @@
     <h4>Reviews</h4>
     <div th:each="review : ${reviews}">
         <p><strong th:text="${review.user.email}">User</strong>:</p>
-        <p th:text="${review.content}">Review content</p>
+        <p th:utext="${review.content}">Review content</p>
         <hr>
     </div>
 
